@@ -1,14 +1,14 @@
 {
   "name": "language-caos",
   "main": "./lib/language-caos",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "description": "A language used in the Creatures series of games: Creatures Agent Object Script",
   "keywords": [
   ],
   "activationCommands": {
-    "atom-workspace": "language-creatures-caos:toggle"
+    "atom-workspace": "language-caos:toggle"
   },
-  "repository": "https://github.com/Creatures-Developer-Network/language-creatures-caos",
+  "repository": "https://github.com/Creatures-Developer-Network/atom-language-caos",
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
