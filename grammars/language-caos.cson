@@ -1,0 +1,113 @@
+name: 'CAOS (Creatures Agent Object Script)'
+scopeName: 'text'
+fileTypes: [
+  'cos'
+  'cosp'
+]
+patterns: [
+    {
+      comment: 'CAOS2PRAY'
+      begin: '(\\*#)([A-Za-z\\-0-9_ ]+)(=)'
+      beginCaptures:
+          1:
+              name: 'comment.line'
+          2:
+              name: 'keyword.control.directive'
+          3:
+              name: 'keyword.operator'
+      patterns: [
+          {
+              match: '[A-Za-z][A-Za-z0-9]+'
+          }
+          {
+              match: '\\d+'
+              name: 'constant.numeric'
+          }
+          {
+              begin: '"'
+              end: '"'
+              patterns: [{
+                  match: '\\\\.'
+                  name: 'constant.character.escape'
+              }]
+              name: 'string.double'
+          }
+      ]
+      end: '$'
+      contentName: 'meta.preprocessor'
+    }
+  {
+    comment: 'CAOS2PRAY'
+    begin: '(\\*#)(\\s*[^\\s]+)'
+    beginCaptures:
+        1:
+            name: 'comment.line'
+        2:
+            name: 'keyword.control.directive'
+    patterns: [
+        {
+            match: '[A-Za-z][A-Za-z0-9]+'
+        }
+        {
+            match: '\\d+'
+            name: 'constant.numeric'
+        }
+        {
+            begin: '"'
+            end: '"'
+            patterns: [{
+                match: '\\\\.'
+                name: 'constant.character.escape'
+            }]
+            name: 'string.double'
+        }
+    ]
+    end: '$'
+    contentName: 'meta.preprocessor'
+  }
+  {
+    match: '^\\*.*$'
+    name: 'comment.line'
+  }
+  {
+    match: '\\*.*$'
+    name: 'invalid.illegal'
+  }
+  {
+    match: 'doif|elif|else|endi|scrp|iscr|rscr|endm|enum|esee|etch|epas|next|loop|untl|repe|reps|goto|gsub|subr|retn|stop'
+    name: 'keyword.control'
+  }
+  {
+    match: '(va\\d{2})|(ov\\d{2})|(mv\\d{2})'
+    name: 'variable.other'
+  }
+  {
+    match: '[A-Za-z_][A-Za-z_0-9:]{4,}'
+    name: 'invalid.illegal'
+  }
+  {
+    match: '[A-Za-z_][A-Za-z_0-9:]{3}'
+    name: 'text'
+  }
+  {
+    match: 'eq|ne|gt|ge|lt|le|and|or|=|<>|>|>=|<|<='
+    name: 'keyword.operator'
+  }
+  {
+    match: '[A-Za-z_][A-Za-z_0-9:]{1,2}'
+    name: 'invalid.illegal'
+  }
+  {
+    begin: '"'
+    end: '"'
+    patterns: [{
+        match: '\\\\.'
+        name: 'constant.character.escape'
+    }]
+    name: 'string.double'
+  }
+  {
+    match: '-?\\d+(\\.\\d+)?'
+    name: 'constant.numeric'
+  }
+]
